@@ -9,14 +9,13 @@ name = "pypi"
 
 sphinx-autobuild = "*"
 yapf = "*"
-restructuredtext-lint = "*"
+restructuredtext_lint = "*"
 
 
 [packages]
 
-sphinx = "*"
-sphinx-bootstrap-theme = "*"
-sphinx-rtd-theme = "*"
+Sphinx = "*"
+sphinx_rtd_theme = "*"
 
 
 [requires]
