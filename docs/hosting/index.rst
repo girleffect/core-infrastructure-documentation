@@ -8,7 +8,7 @@ Our Core Hosting Environment
 Overview
 --------
 
-The previous way Girl Effect approached the hosting of our digital applications and services was on an ad hoc basis, hosting different applications in completely different environments and providers around the world. This approach had a number of drawbacks: 
+The previous way Girl Effect approached the hosting of our digital applications and services was on an ad hoc basis, hosting different applications in completely different environments and providers around the world. This approach had a number of drawbacks:
 
 * It was not cost efficient
 * There was no unified view of what was running and where
@@ -43,7 +43,7 @@ Monitoring
 
 Metrics
     Reports of key performance metrics for the containers and other infrastructure are provided to application providers.
-    
+
 
 Usage & Billing
     Detailed breakdowns of resource usage and — potentially — costs are provided for applications.
@@ -80,7 +80,7 @@ Multiple regions across the globe
     While we are currently only hosting in a single region (Ireland-Europe), AWS provides us with the flexibility to quickly roll out infrastructure across the globe to best serve all markets if needed.
 
 Multiple Availability Zones in each region
-    In a single region we run our cluster infrastructure across multiple availability zones to ensure that downtime in a single AZ does not result in downtime for the whole cluster. 
+    In a single region we run our cluster infrastructure across multiple availability zones to ensure that downtime in a single AZ does not result in downtime for the whole cluster.
 
 Relational Database Service (RDS)
     RDS allows us to quickly provide fast, efficient and safe access to database services like PostgreSQL and MySQL to all the applications running in our infrastructure. RDS also provides us with at-rest encryption and solid backup strategies for all of our critical data sources.
@@ -92,29 +92,41 @@ Additional Services
 Docker
 ~~~~~~
 
-We have standardised on Docker as the base unit of computation for all application workloads that need to run in our hosting environment. This provides us and application developers with some key benefits:
+We have standardised on Docker containers as the base of applications and services that need to run in our hosting environment. This provides us and application developers with some key benefits:
 
-.. TODO: expand on each of these
+Consistency and portability
+    Docker containers run across a wide range of environments, eliminating a range of problems that arise when development, QA and production environments do not exactly match.
 
-* lightweight
-* standards based
-* consistency
-* security
-* portability
+Security
+    Docker containers run in isolation from each other, ensuring that failures or breaches in one container do not impact other running applications.
 
+Cost savings
+    Docker enables efficient usage of underlying resources which helps to reduce overhead costs.
 
 DC/OS
 ~~~~~
 
-DC/OS (the datacenter operating system) is an open-source, distributed operating system based on the Apache Mesos. 
+.. epigraph::
+
+    DC/OS (the datacenter operating system) is an open-source, distributed operating system based on the Apache Mesos. It enables the management of multiple machines as if they were a single computer. It automates resource management, schedules process placement, facilitates inter-process communication, and simplifies the installation and management of distributed services.
+
+    -- `dcos.io <https://dcos.io>`_
+
+We are using DC/OS to build our clusters on top of the AWS resources. DC/OS allows us to efficiently utilise the underlying resources, keep applications isolated from each other and a provide fault tolerant environment while  developers can focus on building their applications without having to worry about the details of how they are hosted.
 
 Spinnaker
 ~~~~~~~~~
 
-* CD
-* orchestration
-* immutable
-* multi cluster
+Spinnaker is the multi-cloud continuous delivery platform that we are using to manage all the containerised applications and services. Spinnaker was initially built and open-sourced by Netflix and is now gaining wide adoption across the industry.
+
+Spinnaker is used for all the day-to-day configuration, deployment and management of the applications. We provide :ref:`getting started <spinnaker-getting-started>` and :ref:`day-to-day management<spinnaker-management>` guides for using Spinnaker, along with details on the continuous delivery methods we have implemented and suggest others adopt.
+
+The key benefits that Spinnaker provides are:
+
+* Continuous Delivery
+* Multi-cloud support
+* Immutable infrastructure paradigm
+* Accountability and auditability
 
 .. _hosting-requirements:
 
@@ -154,7 +166,7 @@ Sharing volumes across container instances has proven to be a reliability and sc
 
 **Applications must be able to be torn down and / or restarted elsewhere without notice**
 
-While we do our best to make sure container instances are not arbitrarily stopped and started, application developers are expected to be handle this behaviour without notice from the system. 
+While we do our best to make sure container instances are not arbitrarily stopped and started, application developers are expected to be handle this behaviour without notice from the system.
 
 Recommendations
 ~~~~~~~~~~~~~~~
@@ -187,3 +199,9 @@ Further Reading
 
 * in-cluster traffic routing and load balancing
 * resource creation
+
+.. toctree::
+    :maxdepth: 2
+    :hidden:
+
+    spinnaker
