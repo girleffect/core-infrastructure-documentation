@@ -128,6 +128,11 @@ The key benefits that Spinnaker provides are:
 * Immutable infrastructure paradigm
 * Accountability and auditability
 
+.. toctree::
+    :maxdepth: 2
+
+    spinnaker
+
 .. _hosting-requirements:
 
 Application Requirements
@@ -200,8 +205,3 @@ Further Reading
 * in-cluster traffic routing and load balancing
 * resource creation
 
-.. toctree::
-    :maxdepth: 2
-    :hidden:
-
-    spinnaker
