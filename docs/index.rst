@@ -19,11 +19,11 @@ There are three main layers to the Core Infrastructure project:
 
 
 Applications
-    The application layer is the top most layer and builds on the Core Components and Hosting Environment. This layer is where all the Girl Effect digital applications and services will run, whether they are developed internally at Girl Effect or with outside partners. 
-    
+    The application layer is the top most layer and builds on the Core Components and Hosting Environment. This layer is where all the Girl Effect digital applications and services will run, whether they are developed internally at Girl Effect or with outside partners.
+
     The applications in this layer are expected to leverage the functionality provided by the Core Components and Hosting Environment to enable quick roll out, rapid iteration and easy scaling.
 
-:doc:`Core Components <core-components>`
+:doc:`Core Components <core-components/index>`
     The Core Component layer builds on the Hosting Environment layer to provide the shared functionality that all the applications can make use of.
 
     Some of the initial functionality that will be provided by the Core Components is: safe user data storage, authorisation and access control; user and system event logging; platform-wide data analysis; platform-wide media asset management.
@@ -39,7 +39,7 @@ One of the main goals of the Core Infrastructure project is to make it possible 
 
 * A :ref:`technical overview of our Hosting Environment <hosting-overview>`, including the :ref:`key technologies <hosting-key-technologies>` we have chosen
 * A :ref:`reference guide to the technologies needing to be adopted <hosting-requirements>` to run applications in our Hosting Environment
-* :doc:`Detailed descriptions of the Core Components <core-components>`, :ref:`the APIs they provide <core-components-apis>` and an :ref:`adoption and best practice guide <core-components-guide>`.
+* :doc:`Detailed descriptions of the Core Components <core-components/index>`, :ref:`the APIs they provide <core-components-apis>` and an :ref:`adoption and best practice guide <core-components-guide>`.
 * Development best practices that we follow
 * Our support and escalations procedures
 
@@ -48,6 +48,7 @@ One of the main goals of the Core Infrastructure project is to make it possible 
     :hidden:
 
     hosting/index
-    core-components
+    core-components/index
+    core-components/oidc
     development-best-practices
     support-escalation
