@@ -83,9 +83,14 @@ Details
 
 One of the main goals of the Core Infrastructure project is to make it possible to rapidly build and deploy scalable applications that still protect our user's data and privacy. To help get application developers up to speed, we provide the following documentation:
 
-* A :ref:`technical overview of our Hosting Environment <hosting-overview>`, including the :ref:`key technologies <hosting-key-technologies>` we have chosen
-* A :ref:`reference guide to the technologies needing to be adopted <hosting-requirements>` to run applications in our Hosting Environment
-* :doc:`Detailed descriptions of the Core Components <core-components/index>`, :ref:`the APIs they provide <core-components-apis>` and an :ref:`adoption and best practice guide <integration-integration-guide>`.
+Introductory documentation:
+
+* :ref:`A technical overview of our Hosting Environment <hosting-overview>`, including the :ref:`key technologies <hosting-key-technologies>` we have chosen
+
+Reference Documentation:
+
+* :ref:`A reference guide to the tech-related requirements needing to be followed <developer-requirements>` to run applications as part of the Core Infrastructure.
+* :doc:`Detailed descriptions of the Core Components <core-components/index>`, :ref:`the APIs they provide <core-components-apis>` and an :ref:`adoption and best practice guide <core-components-guide>`.
 * Development best practices that we follow
 * Our support and escalations procedures
 
@@ -96,7 +101,6 @@ One of the main goals of the Core Infrastructure project is to make it possible 
     hosting/index
     core-components/index
     core-components/oidc
-    integration/index
-    integration/process-flows
+    reference/developer-requirements
     development-best-practices
     support-escalation
