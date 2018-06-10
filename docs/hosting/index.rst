@@ -204,4 +204,3 @@ Further Reading
 
 * in-cluster traffic routing and load balancing
 * resource creation
-

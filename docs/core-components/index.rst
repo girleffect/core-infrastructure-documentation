@@ -11,7 +11,7 @@ The first set of core services that have been developed are:
 User Identity
 -------------
 
-Together with Girl Effect, Praekelt has developed an identity provider service that adopts open industry standards (like OpenID Connect) that forms the base user identity for all end-users of Girl Effect’s digital applications and platforms.   This identity provider has allowed us to codify our best practices around user acquisition and informed consent for all applications and allow Girl Effect to efficient meet all the compliance requirements of legislation like the GDPR.
+Together with Girl Effect, Praekelt has developed an identity provider service that adopts open industry standards (like OpenID Connect) that forms the base user identity for all end-users of Girl Effect’s digital applications and platforms.  This identity provider has allowed us to codify our best practices around user acquisition and informed consent for all applications and allow Girl Effect to efficient meet all the compliance requirements of legislation like the GDPR.
 
 .. _core-components-user-data-storage:
 
@@ -45,13 +45,3 @@ Analysis and Insight
 --------------------
 
 A key requirement for Girl Effect’s work is being able to measure reach and impact across all of their applications and platforms. To achieve this Praekelt has built a centralised Data Platform that leverages the consolidated hosting environment to extract relevant data insights from each application and platform into a single place for Girl Effect’s evidence team to analyse and report and as needed
-
-
-
-
-.. _core-components-guide:
-
-Guide
------
-
-guide
