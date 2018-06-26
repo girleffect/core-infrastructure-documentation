@@ -43,4 +43,4 @@ To set up the initial container in the QA cluster in Spinnaker you need to follo
 
 This will launch the first version of your container into the QA hosting environment.
 
-Once the Spinnaker server group is running an healthy you can click on it and use the "Server Group Actions" menu to perform common actions like resizing, disabling, destroying and cloning.
+Once the Spinnaker server group is running and healthy you can click on it and use the "Server Group Actions" menu to perform common actions like resizing, disabling, destroying and cloning.

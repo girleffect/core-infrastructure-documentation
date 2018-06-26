@@ -119,7 +119,7 @@ Spinnaker
 
 Spinnaker is the multi-cloud continuous delivery platform that we are using to manage all the containerised applications and services. Spinnaker was initially built and open-sourced by Netflix and is now gaining wide adoption across the industry.
 
-Spinnaker is used for all the day-to-day configuration, deployment and management of the applications. We provide :ref:`getting started <spinnaker-getting-started>` and :ref:`day-to-day management<spinnaker-management>` guides for using Spinnaker, along with details on the continuous delivery methods we have implemented and suggest others adopt.
+Spinnaker is used for all the day-to-day configuration, deployment and management of the applications.
 
 The key benefits that Spinnaker provides are:
 
@@ -132,6 +132,7 @@ The key benefits that Spinnaker provides are:
     :maxdepth: 2
 
     spinnaker
+    quick-start-guide
 
 .. _hosting-requirements:
 
@@ -200,6 +201,6 @@ Our policy is Open Source first for all our code and we recommend application pr
 
 
 Quick-start Guide
----------------------
+-----------------
 
-We provide :doc:`a quick-start guide <quick-start-guide>` that can help developers get the application up and running in the hosting environment.
+We provide :doc:`a quick-start guide <quick-start-guide>` that can help developers get their application up and running in the hosting environment.
