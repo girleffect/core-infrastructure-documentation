@@ -62,13 +62,36 @@ Deployment Management
 
 We use Spinnaker's deployment management features to construct and manage continuous delivery workflows that are customised to each application or team.
 
-.. _spinnaker-getting-started:
+Traffic Routing and HTTPS
+-------------------------
 
-Getting Started
----------------
+Basics
+~~~~~~~
 
-.. _spinnaker-management:
+Traffic is routed from external sources to containers in the cluster via HAProxy load balancers and is configured via "Labels" that are set up in Spinnaker during the Server Group configuration.
 
-Day-to-day Management
----------------------
+There are two wildcard domain names set up that can be used to access containers in both the QA and PRD clusters.
 
+The QA wildcard domain is **"*.qa-hub.ie.gehosting.org"** and the PRD wildcard domain is **"*.prd-hub.ie.gehosting.org"**
+
+Other domains can also be used when required, as long as they have the correct DNS entries set up.
+
+There is also a mechanism to auto-generate and serve HTTPS certificates using our integration with `Lets Encrypt <https://letsencrypt.org>`_ when specifying the correct label.
+
+How-to
+~~~~~~
+
+When you want to route traffic from the outside world to one of your server groups you need to specify the following to labels in the Spinnaker Server Group setup wizard under the Labels section:
+
+HAPROXY_0_VHOST
+    A comma separated list of domains to route traffic for, e.g. key = HAPROXY_0_VHOST value = testapp.qa-hub.ie.gehosting.org
+
+HAPROXY_GROUP
+    Should always be set to the string "external", e.g. key = HAPROXY_GROUP value = external
+
+If you do not specify these two labels, no traffic from outside of the cluster will be routed to your server group.
+
+If you want an auto-generated HTTPS certificate you can specify the following label:
+
+MARATHON_ACME_0_DOMAIN
+    The domain you want to auto-generate and serve a Lets Encrypt certificate for, e.g. key = MARATHON_ACME_0_DOMAIN value = testapp.qa-hub.ie.gehosting.org

@@ -199,8 +199,7 @@ We currently only support applications using a RDS provisioned database service.
 Our policy is Open Source first for all our code and we recommend application providers do the same unless specifically asked not to.
 
 
-Further Reading
----------------
+Quick-start Guide
+---------------------
 
-* in-cluster traffic routing and load balancing
-* resource creation
+We provide :doc:`a quick-start guide <quick-start-guide>` that can help developers get the application up and running in the hosting environment.
