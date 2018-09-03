@@ -69,13 +69,9 @@ Authentication Service
 
 The Authentication Service is a component of the Core Infrastructure, that handles all User Profile related functions, like Registration, Edit Profile, Login etc.  Client applications redirect users to the Auth Service for these functions, while passing Client Secrets, Configuration, and Access Tokens through with the request.
 
-
-
 2FA
 
-
-
-
+Two-factor authentication means that a user needs a second means of authentication, the first being the username and password combination. We use a time-based token generator as the second factor. Any application that supports TOTP can be used. The core infrastructure development team use Google Authenticator: https://en.wikipedia.org/wiki/Google_Authenticator
 
 
 Details
