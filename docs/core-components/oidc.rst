@@ -91,20 +91,48 @@ can be decoded into three parts:
 OIDC in Girl Effect
 -------------------
 
-**Django OIDC Provider:**
+Overview
+++++++++
 
-    The Girl Effect Authentication Service uses the Django OIDC Provider library to perform all OIDC related tasks and makes use
-    of the Django OIDC Provider models to create clients, etc. The Django OIDC Provider can be found here: https://github.com/juanifioren/django-oidc-provider
+The Girl Effect Authentication Service uses the Django OIDC Provider library to perform all OIDC related tasks and makes use
+of the Django OIDC Provider models to create clients, etc. The Django OIDC Provider can be found here: https://github.com/juanifioren/django-oidc-provider
 
-**Mozilla Django OIDC:**
+For our Django-based projects Mozilla Django OIDC is used to integrate with the OIDC enabled Authentication Service on Girl Effect. Other libraries can/should be used for other types of apps. Mozilla Django OIDC can be found here: https://github.com/mozilla/mozilla-django-oidc
 
-    Mozilla Django OIDC is used by other Django apps to integrate with the OIDC enabled Authentication Service on Girl Effect. Other
-    libraries can/should be used for other types of apps. Mozilla Django OIDC can be found here: https://github.com/mozilla/mozilla-django-oidc
+An example of a wagtail app using OIDC and the Girl Effect Authentication service can be found here: https://github.com/girleffect/core-integration-demo/tree/develop/girleffect_oidc_integration
 
-**Wagtail implementation:**
+Integration
++++++++++++
 
-    An example of a wagtail app using OIDC and the Girl Effect Authentication service can be found here:
-    https://github.com/girleffect/core-integration-demo/tree/develop/girleffect_oidc_integration
+Firstly, find a OIDC library for the language of your application. This library will typically require you to provide the following configuration items:
+
+=========================== ===========
+Item                        Description
+=========================== ===========
+OIDC Relying Party client   Contact Girl Effect to set this up for you.
+OIDC Relying Party secret   Girl Effect will provide this.
+(only trusted clients)
+OIDC Identity Provider URL  (QA) https://authentication-service.qa-hub.ie.gehosting.org/
+...                         (Production) https://auth.gehosting.org/
+OIDC Authorisation Endpoint (QA) https://authentication-service.qa-hub.ie.gehosting.org/openid/authorize/
+...                         (Production) https://auth.gehosting.org/openid/authorize/
+OIDC Token Endpoint         (QA) https://authentication-service.qa-hub.ie.gehosting.org/openid/token/
+...                         (Production) https://auth.gehosting.org./openid/token/
+OIDC User Info Endpoint     (QA) https://authentication-service.qa-hub.ie.gehosting.org/openid/userinfo/
+...                         (Production) https://auth.gehosting.org/openid/iserinfo/
+OIDC User Logout Endpoint   (QA) https://authentication-service.qa-hub.ie.gehoting.org/openid/end-session/
+...                         (Production) https://auth.gehosting.org/openid/end-session/
+OIDC JSON Webtoken Keys     (QA) https://authentication-service.qa-hub.ie.gehosting.org/openid/jwks
+(only untrusted clients)    (Production) https://auth.gehosting.org/openid/jwks/
+=========================== ===========
+
+When requesting you client ID and secret, you will have to provide the following:
+
+* The URL of your site.
+* Whether your site can protect client credentials. Javascript-based sites typically cannot keep the client credentials secret and therefor uses a KPI based method of validation.
+* A URL on the site where a user can be redirected to after logout.
+* The URL of your site where the OIDC callback is to be received.
+
 
 Sources
 -------
