@@ -101,8 +101,8 @@ For our Django-based projects Mozilla Django OIDC is used to integrate with the 
 
 An example of a wagtail app using OIDC and the Girl Effect Authentication service can be found here: https://github.com/girleffect/core-integration-demo/tree/develop/girleffect_oidc_integration
 
-Integration
-+++++++++++
+Integration Configuration
++++++++++++++++++++++++++
 
 Firstly, find a OIDC library for the language of your application. This library will typically require you to provide the following configuration items:
 
@@ -133,6 +133,45 @@ When requesting you client ID and secret, you will have to provide the following
 * A URL on the site where a user can be redirected to after logout.
 * The URL of your site where the OIDC callback is to be received.
 
+Integration Guidelines
+++++++++++++++++++++++
+Integrating OIDC with any project depends highly on the language and libraries being used.
+While the configuration options will be similar, the actual may vary.
+
+For Django projects using the Mozilla Django OIDC client, the documentation can be found here:
+https://mozilla-django-oidc.readthedocs.io/en/stable/installation.html
+
+Typically the following will have to be done in any integration:
+
+Acquire client credentials from the Identity Provider
+  A client id (and client secret in the case of a trusted client) need to be
+  obtained from the Identity Provider. If you are going to be running your
+  application in multiple environments, you need different credentials for
+  environment.
+
+Replace you existing authentication backend with OIDC
+  What this entails may vary considerably between languages and frameworks:
+  login and logout links will have to be updated, at least.
+  The results of this step is that a user logging in will be redirected to
+  the Authentication Service, where the user will enter his/her credentials and,
+  if correct, be redirected back to the site with the necessary token(s). The
+  token(s) can be used in subsequent calls to retrieve user-related information.
+
+Connecting OIDC user identities to existing users
+  For new application this is not a concern. For existing applications it is very
+  important that profiles on the Authentication Service can be mapped to
+  existing profiles in the client database. Please discuss your specific
+  situation with Girl Effect technical staff in order to plan a smooth
+  transition.
+
+Log users out of the Authentication Service
+  When a user logs out of an application, they expect to be prompted for a
+  username and password when they try to log back in again. By default this
+  is not the case with an Identity Provider, as the user may still be logged
+  in to the Identity Provider and therefor be granted direct access to a site
+  when they click the login button. To prevent this behaviour, the logout
+  behaviour can be changed so that the user is logged out of both the
+  application as well as the identity provider.
 
 Sources
 -------
