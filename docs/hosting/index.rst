@@ -212,10 +212,13 @@ By default, Amazon RDS creates and saves automated backups of your DB instance s
 
 **Automated Backups**
 
-Turned on by default, the automated backup feature of Amazon RDS will backup your databases and transaction logs. Amazon RDS automatically creates a storage volume snapshot of the DB instance, backing up the entire DB instance and not just individual databases.
-This backup occurs during a daily user-configurable 30 minute period known as the backup window. Automated backups are kept for a configurable number of days (called the backup retention period). The automatic backup retention period can be configured to up to thirty-five days. The first snapshot of a DB instance contains the data for the full DB instance. Subsequent snapshots of the same DB instance are incremental, which means that only the data that has changed after your most recent snapshot is saved.
+The automated backup feature of Amazon RDS will backup your databases and transaction logs, Amazon RDS automatically creates a storage volume snapshot of the DB instance, backing up the entire DB instance and not just individual databases.
+This backup occurs during a daily user-configurable 30 minute period known as the backup window. Automated backups are kept for a configurable number of days (called the backup retention period), The automatic backup retention period can be configured to up to thirty-five days.
+The first snapshot of a DB instance contains the data for the full DB instance. Subsequent snapshots of the same DB instance are incremental, which means that only the data that has changed after your most recent snapshot is saved.
 Automated backups follow these rules:
+
 * The DB instance must be in the ACTIVE state for automated backups to occur. Automated backups don't occur while your DB instance is in a state other than ACTIVE, for example STORAGE_FULL.
+
 * Automated backups and automated snapshots don't occur while a copy is executing in the same region for the same DB instance.
 
 **Point-in-time Restores**
