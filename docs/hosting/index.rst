@@ -273,6 +273,38 @@ Girl Effect Backup Configuration
  prd-springster-db01    PostgreSQL          Enabled            Enabled                  7 Days             NA          -
 ====================== =================== ================== ======================== ================== =========== ==================
 
+The Database Cluster contain the following aplication databases:
+
+**prd-coreapps-db01**
+
+* Corporate Site
+
+**prd-coreinfra-db01**
+
+* User Data Store
+
+* Authentication Service
+
+* Access Control
+
+**prd-infradb01**
+
+* Redash
+
+* Grafana
+
+**prd-maido-mysql-db01**
+
+* Tega
+
+**prd-springster-db01**
+
+* Springster
+
+* Zathu
+
+* Ninyampinga
+
 
 Quick-start Guide
 -----------------
