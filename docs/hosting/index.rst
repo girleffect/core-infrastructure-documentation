@@ -199,6 +199,77 @@ We currently only support applications using a RDS provisioned database service.
 
 Our policy is Open Source first for all our code and we recommend application providers do the same unless specifically asked not to.
 
+.. _Backups:
+
+Backups
+-------
+
+Database Backup
+~~~~~~~~~~~~~~~
+
+AWS database services (relational and non-relational) have built-in, automated backup capabilities to protect the data and applications.
+By default, Amazon RDS creates and saves automated backups of your DB instance securely for 7 days retention period. In addition, you can create snapshots, which are user-initiated backups of the instance that are kept until you explicitly delete them.
+
+**Automated Backups**
+
+Turned on by default, the automated backup feature of Amazon RDS will backup your databases and transaction logs. Amazon RDS automatically creates a storage volume snapshot of the DB instance, backing up the entire DB instance and not just individual databases.
+This backup occurs during a daily user-configurable 30 minute period known as the backup window. Automated backups are kept for a configurable number of days (called the backup retention period). The automatic backup retention period can be configured to up to thirty-five days. The first snapshot of a DB instance contains the data for the full DB instance. Subsequent snapshots of the same DB instance are incremental, which means that only the data that has changed after your most recent snapshot is saved.
+Automated backups follow these rules:
+* The DB instance must be in the ACTIVE state for automated backups to occur. Automated backups don't occur while your DB instance is in a state other than ACTIVE, for example STORAGE_FULL.
+* Automated backups and automated snapshots don't occur while a copy is executing in the same region for the same DB instance.
+
+**Point-in-time Restores**
+
+You can restore your DB instance to any specific time during the backup retention period, creating a new DB instance. To restore your database instance, you can use the AWS Console or Command Line Interface. To determine the latest restorable time for a DB instance, use the AWS Console or Command Line Interface to look at the value returned in the LatestRestorableTime field for the DB instance. The latest restorable time for a DB instance is typically within 5 minutes of the current time.
+
+**Database Snapshots**
+
+Database snapshots are user-initiated backups of your instance stored in Amazon S3 that are kept until you explicitly delete them. You can create a new instance from a database snapshots whenever you desire. Although database snapshots serve operationally as full backups, you are billed only for incremental storage use.
+
+**Snapshot Copies**
+
+With Amazon RDS, you can copy DB snapshots and DB cluster snapshots. You can copy automated or manual snapshots. After you copy a snapshot, the copy is a manual snapshot. You can copy a snapshot within the same AWS Region, you can copy a snapshot across AWS Regions, and you can copy a snapshot across AWS accounts.
+
+**Aurora Backtrack Feature**
+
+In addition to the automated backups with Amazon Aurora with MySQL compatibility, you can backtrack a DB cluster to a specific time, without restoring data from a backup. Backtracking "rewinds" the DB cluster to the time you specify. Backtracking is not a replacement for backing up your DB cluster so that you can restore it to a point in time. However, backtracking provides the following advantages over traditional backup and restore:
+
+* You can easily undo mistakes. If you mistakenly perform a destructive action, such as a DELETE without a WHERE clause, you can backtrack the DB cluster to a time before the destructive action with minimal interruption of service.
+
+* You can backtrack a DB cluster quickly. Restoring a DB cluster to a point in time launches a new DB cluster and restores it from backup data or a DB cluster snapshot, which can take hours. Backtracking a DB cluster doesn't require a new DB cluster and rewinds the DB cluster in minutes.
+
+* You can explore earlier data changes. You can repeatedly backtrack a DB cluster back and forth in time to help determine when a particular data change occurred. For example, you can backtrack a DB cluster three hours and then backtrack forward in time one hour. In this case, the backtrack time is two hours before the original time.
+
+As you make updates to your Aurora DB cluster with backtracking enabled, you generate change records. Aurora retains change records for the target backtrack window, and you pay an hourly rate for storing them. Both the target backtrack window and the workload on your DB cluster determine the number of change records you store. The workload is the number of changes you make to your DB cluster in a given amount of time. If your workload is heavy, you store more change records in your backtrack window than you do if your workload is light.
+When backtracking is enabled for a DB cluster, and you delete a table stored in the DB cluster, Aurora keeps that table in the backtrack change records. It does this so that you can revert back to a time before you deleted the table.
+
+**Backtrack Limitations**
+
+The following limitations apply to backtracking:
+
+* Backtracking is only available on DB clusters that were created with the Backtrack feature enabled. You can enable the Backtrack feature when you create a new DB cluster, restore a snapshot of a DB cluster, or clone a DB cluster. Currently, backtracking is not possible on DB clusters that were created with the Backtrack feature disabled.
+
+* The limit for a backtrack window is 72 hours.
+
+* Backtracking affects the entire DB cluster. For example, you can't selectively backtrack a single table or a single data update.
+
+* Backtracking causes a brief DB instance disruption. You must stop or pause your applications before starting a backtrack operation to ensure that there are no new read or write requests. During the backtrack operation, Aurora pauses the database, closes any open connections, and drops any uncommitted reads and writes. It then waits for the backtrack operation to complete.
+
+* Backtracking is only supported for Aurora MySQL 5.6.
+
+Girl Effect Backup Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+====================== =================== ================== ======================== ================== =========== ==================
+ Database Cluster       Database Type       Automated Backup   Point-in-time Restores   Retention Period   Backtrack   backtrack window
+====================== =================== ================== ======================== ================== =========== ==================
+ prd-coreapps-db01      PostgreSQL          Enabled            Enabled                  7 Days             NA          -
+ prd-coreinfra-db01     Aurora PostgreSQL   Enabled            Enabled                  7 Days             NA          -
+ prd-infradb01          PostgreSQL          Enabled            Enabled                  7 Days             NA          -
+ prd-maido-mysql-db01   Aurora MySQL        Enabled            Enabled                  7 Days             Enabled     24 Hours
+ prd-springster-db01    PostgreSQL          Enabled            Enabled                  7 Days             NA          -
+====================== =================== ================== ======================== ================== =========== ==================
+
 
 Quick-start Guide
 -----------------
