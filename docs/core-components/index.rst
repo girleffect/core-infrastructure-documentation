@@ -98,18 +98,18 @@ RapidPro
 
 RapidPro is a communication platform that facilitates engaging with users via mobile channels. It is an open source technology built with Python and Django. More information on its history can be found here https://community.rapidpro.io/about-rapidpro/, feature lists and developer docs can be found here http://rapidpro.github.io/rapidpro/
 
-While there is a hosted version of RapidPro available for use Girl Effect and Praekelt chose to host our own instance in the AWS cluster. It is running at http://rapidpro.prd.nnmobi.com/
+While there is a hosted version of RapidPro available for use, Girl Effect and Praekelt chose to host our own instance in the AWS cluster. It is running at http://rapidpro.prd.nnmobi.com/.  
 The projects currently making use of this instance are:
 
-* Ni Nyampinga (Girl Effect Rwanda):
-  * 2 SMS lines through Junebug
-  * Allows users to register for the IVR line (not managed by Praekelt) or send feedback
-  * Infrequent surveys and campaigns
+Ni Nyampinga (Girl Effect Rwanda):
+  + 2 SMS lines through Junebug
+  + Allows users to register for the IVR line (not managed by Praekelt) or send feedback
+  + Infrequent surveys and campaigns
 
-* AskSpringster:
-  * Facebook Messenger channel
-  * A bot that engages with users
-  * Frequent surveys and campaigns
+AskSpringster:
+  + Facebook Messenger channel
+  + A bot that engages with users
+  + Frequent surveys and campaigns
 
 Admin Tasks
 +++++++++++
