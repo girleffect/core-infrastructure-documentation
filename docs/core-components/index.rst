@@ -85,6 +85,44 @@ Component              URL
 Management Layer       http://petstore.swagger.io/?url=https://raw.githubusercontent.com/girleffect/core-management-layer/master/swagger/management_layer.yml
 ====================== ===
 
+
+.. _core-components-messaging-platform:
+
+Messaging Platform
+------------------
+
+Praekelt have implemented a centralised Messaging Platform in order to facilitate the design and management of Girl Effect's multiple message-based interactions with end users across their portfolio of projects. The main component of the platform is RapidPro.
+
+RapidPro
+~~~~~~~~
+
+RapidPro is a communication platform that facilitates engaging with users via mobile channels. It is an open source technology built with Python and Django. More information on its history can be found here https://community.rapidpro.io/about-rapidpro/, feature lists and developer docs can be found here http://rapidpro.github.io/rapidpro/
+
+While there is a hosted version of RapidPro available for use Girl Effect and Praekelt chose to host our own instance in the AWS cluster. It is running at http://rapidpro.prd.nnmobi.com/
+The projects currently making use of this instance are:
+
+* Ni Nyampinga (Girl Effect Rwanda):
+** 2 SMS lines through Junebug
+** Allows users to register for the IVR line (not managed by Praekelt) or send feedback
+** Infrequent surveys and campaigns
+
+* AskSpringster:
+** Facebook Messenger channel
+** A bot that engages with users
+** Frequent surveys and campaigns
+
+Admin Tasks
+~~~~~~~~~~~
+
+Adding users:
+    In order to add new users an admin must navigate to http://rapidpro.prd.nnmobi.com/org/manage_accounts/. From there they can remove or change the permissions for existing users and invite new users by entering their email address in the text box at the bottom of the page. The user will then receive an email inviting them to the organisation. When they follow the link in the email they will be asked to choose a password if they do not already have one set. It is important to keep the list of users up to date as this list is used for notification emails about credit balances ect.
+
+Credit Topup:
+    Due to the design of RapidPro every message sent or received results in a deduction of credits. If these credits run out or expire then message handling for that Organisation stops until more credits have been loaded. The idea is that Organisations using RapidPro would pay based on their usage. However, since we do not charge per message we just ensure that each Organisation has enough credits loaded on the system to continue running. Please reach out to Praekelt in order to topup credits for an organisation.
+
+Creating Channels:
+    Creation of most channels is straightforward and explained during the process. Junebug channels will require assistance from a Praekelt developer before they can be setup in RapidPro.
+
 .. _core-components-analysis-insight:
 
 Analysis and Insight
